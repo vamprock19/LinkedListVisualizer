@@ -1,8 +1,22 @@
 #include "ofApp.h"
+#include<cstdlib>
 
+struct Node
+{
+	int data;
+	Node* next; // ptr
+};
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+	Node* head = new Node{ rand() % 10,nullptr};
+	head->next = new Node{ rand() % 20,nullptr};
+	head->next->next = new Node{ rand() % 30,nullptr};
+
+	cout << head->data << " -> " << head->next->data << " -> " << head->next->next->data << endl;
+
+	delete head->next;
+	delete head;
 
 }
 
