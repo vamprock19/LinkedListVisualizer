@@ -90,15 +90,13 @@ void ofApp::setup()
 	ofSetFrameRate(60);
 	ofBackground(0); //  black background
 	
-	srand(static_cast<unsigned int>(time(nullptr)));
+	list = LinkedList();
 
-	/*for (int i = 0; i < 4; i++)
 	for (int i = 0; i < 4; i++)
 	{
 		list.insertAtHead(rand() % 10 + 1);
 	}
 
-	Node* head = new Node{ rand() % 10,nullptr};
 	/*Node* head = new Node{ rand() % 10,nullptr};
 	head->next = new Node{ rand() % 20,nullptr};
 	head->next->next = new Node{ rand() % 30,nullptr};
@@ -124,24 +122,11 @@ void ofApp::draw()
 	float y = ofGetHeight() / 6; 
 	float space = 100; 
 
-	ofSetColor(0, 120, 60);
-	float px = 100;
-	float py = ofGetHeight() / 2;
-	float space = 100;
-
-	Node* temp = list.head;
-	vector<ofVec2f> position;
 	Node* temp = list.head; 
 	Node* prev = nullptr; 
 
 	while (temp)
 	{
-		float x = px + position.size() * space;
-		position.push_back(ofVec2f(x, py));
-
-		ofDrawCircle(x, py, 30);
-		ofSetColor(255);
-		ofDrawBitmapString(ofToString(temp->data), x - 5, py + 5);
 		ofDrawCircle(x, y, 30);
 		ofSetColor(255); 
 		ofDrawBitmapString(ofToString(temp->data), x - 5, y + 5);
@@ -157,10 +142,6 @@ void ofApp::draw()
 		temp = temp->next; 
 	}
 	
-	for (int i = 0; i < circlePositions.size() - 1; i++)
-	{
-		ofDrawLine(circlePositions[i], circlePositions[i + 1]);
-	}*/
 }
 
 //--------------------------------------------------------------
