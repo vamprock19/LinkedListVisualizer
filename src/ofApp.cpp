@@ -100,6 +100,14 @@ public:
 	}
 };
 
+void ofApp::randomNumbers()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		circleValue[i] = rand() % 10 + 1;
+		cout << circleValue[i];
+	}
+}
 //--------------------------------------------------------------
 void ofApp::setup()
 {
@@ -134,7 +142,13 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    
+	LinkedList list;
+
+	list.insertAtHead(rand() % 10 + 1);
+	
+	
+	
+
 	ofSetColor(0, 120, 60);
 	float space = ofGetWidth() / 10;
 	float y = ofGetHeight() / 6;
@@ -142,17 +156,22 @@ void ofApp::draw()
 	vector<ofVec2f> circlePositions;
 
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
+		
+		
+
 		float x = (i + 1) * space;
 		circlePositions.push_back(ofVec2f(x, y));
 
 		ofDrawCircle(x,y,35);
-		
+		ofSetColor(255);
+		ofDrawBitmapString(ofToString("20"), x, y);
+		ofSetColor(0, 120, 60);
 
 	}
 
-	ofSetColor(255);
+	
 	for (int i = 0; i < circlePositions.size() - 1; i++)
 	{
 		ofDrawLine(circlePositions[i], circlePositions[i + 1]);
