@@ -103,6 +103,15 @@ public:
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+	LinkedList list;
+
+	list.insertAtHead(rand() % 10 + 1);
+	list.insertAtHead(rand() % 10 + 1);
+	list.insertAtHead(rand() % 10 + 1);
+	list.insertAtHead(rand() % 10 + 1);
+
+
+	list.traverse();
 	/*Node* head = new Node{ rand() % 10,nullptr};
 	head->next = new Node{ rand() % 20,nullptr};
 	head->next->next = new Node{ rand() % 30,nullptr};
@@ -123,11 +132,19 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	glm::vec3 p;      // create a point P
-	p.x = 30;       // set the x of the point
-	p.y = 30;       // set the y of the point
+    
+	ofSetColor(0, 120, 60);
+	float space = ofGetWidth() / 10;
+	float y = ofGetHeight() / 6;
+	
 
-	ofDrawRectangle(p, 160, 160); // Draw the rectangle
+	for (int i = 0; i < 3; i++)
+	{
+		float x = (i + 1) * space;
+		ofDrawCircle(x,y,35);
+		ofDrawLine(x, y, x, y);
+
+	}
 }
 
 //--------------------------------------------------------------
