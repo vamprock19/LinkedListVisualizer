@@ -2,6 +2,37 @@
 
 #include "ofMain.h"
 
+class Node
+{
+public:
+	int data;
+	Node* next;
+
+	Node(int value)
+	{
+		data = value;
+		next = nullptr;
+	}
+	
+
+};
+
+class LinkedList
+{
+public:
+	Node* head;
+	LinkedList();
+
+	void insertAtHead(int value);
+	void insertAtTail(int value);
+	void deleteHead();
+	void deleteTail();
+	void traverse();
+	
+
+
+};
+
 class ofApp : public ofBaseApp
 {
 
@@ -21,8 +52,11 @@ class ofApp : public ofBaseApp
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		std::array<int, 4> circleValue;
-		void randomNumbers();
+		
+		
+
+		LinkedList list;
+		
 		
 };
 
