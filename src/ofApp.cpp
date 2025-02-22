@@ -103,6 +103,8 @@ public:
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+	ofSetFrameRate(60);
+	ofBackground(0); //  black background
 	LinkedList list;
 
 	list.insertAtHead(rand() % 10 + 1);
@@ -137,13 +139,23 @@ void ofApp::draw()
 	float space = ofGetWidth() / 10;
 	float y = ofGetHeight() / 6;
 	
+	vector<ofVec2f> circlePositions;
+
 
 	for (int i = 0; i < 3; i++)
 	{
 		float x = (i + 1) * space;
-		ofDrawCircle(x,y,35);
-		ofDrawLine(x, y, x, y);
+		circlePositions.push_back(ofVec2f(x, y));
 
+		ofDrawCircle(x,y,35);
+		
+
+	}
+
+	ofSetColor(255);
+	for (int i = 0; i < circlePositions.size() - 1; i++)
+	{
+		ofDrawLine(circlePositions[i], circlePositions[i + 1]);
 	}
 }
 
