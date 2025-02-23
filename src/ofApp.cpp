@@ -126,15 +126,15 @@ void ofApp::draw()
 	{
 		float yOffset = amplitude * sin(time + i * 0.05f);
 
-		ofDrawCircle(x, yOffset, 30);
+		ofDrawCircle(x, y, 30);
 		ofSetColor(255); 
-		ofDrawBitmapString(ofToString(temp->data), x - 5, yOffset + 5);
+		ofDrawBitmapString(ofToString(temp->data), x - 5, y + 5);
 		ofSetColor(0, 120, 60);
 
 		if(prev)
 		{
 			ofDrawLine(x - space, y +
-			amplitude * sin(time + (i - 1) * 0.5), x, yOffset);
+			amplitude * sin(time + (i - 1) * 0.5), x, y);
 		}
 
 		prev = temp; 
