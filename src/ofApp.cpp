@@ -1,9 +1,6 @@
 #include "ofApp.h"
 #include<cstdlib>
-
-
-
-
+#include<cmath>
 LinkedList::LinkedList()
 {
 	head = nullptr;
@@ -118,28 +115,32 @@ void ofApp::update()
 void ofApp::draw()
 {
 	ofSetColor(0, 120, 60); 
-	float x = 100;
+	float x = 100 + panX;
 	float y = ofGetHeight() / 6; 
 	float space = 100; 
 
 	Node* temp = list.head; 
 	Node* prev = nullptr; 
-
+	int i = 0;
 	while (temp)
 	{
-		ofDrawCircle(x, y, 30);
+		float yOffset = amplitude * sin(time + i * 0.05f);
+
+		ofDrawCircle(x, yOffset, 30);
 		ofSetColor(255); 
-		ofDrawBitmapString(ofToString(temp->data), x - 5, y + 5);
+		ofDrawBitmapString(ofToString(temp->data), x - 5, yOffset + 5);
 		ofSetColor(0, 120, 60);
 
 		if(prev)
 		{
-			ofDrawLine(x - space, y, x, y);
+			ofDrawLine(x - space, y +
+			amplitude * sin(time + (i - 1) * 0.5), x, yOffset);
 		}
 
 		prev = temp; 
 		x = x + space; 
-		temp = temp->next; 
+		temp = temp->next;
+		i++;
 	}
 	
 }
@@ -163,6 +164,22 @@ void ofApp::keyPressed(int key)
 
 	case's':
 		list.deleteTail();
+		break;
+
+	case'z':
+		amplitude += 5; // increment
+		break;
+
+	case'x':
+		amplitude = max(5.0f, amplitude - 5); // decrease
+		break;
+
+	case OF_KEY_LEFT:
+		panX -= 20; 
+		break;
+
+	case OF_KEY_RIGHT:
+		panX += 20;
 		break;
 	}
 }

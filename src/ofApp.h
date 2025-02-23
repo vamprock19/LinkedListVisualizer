@@ -53,9 +53,10 @@ class ofApp : public ofBaseApp
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		
-
 		LinkedList list;
+		float panX = 0;       // HORIZONTAL
+		float amplitude = 0;  // OSCILLATION
+		float time = 0;       // OSCILLATION TIME
 		
 		
 };
